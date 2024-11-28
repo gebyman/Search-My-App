@@ -1,0 +1,28 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 6px 4px #ece8e8;
+    border-radius: 10px;
+    position: relative;
+    z-index: 6000;
+}
+.menu ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 20px; /*li之間的間隔*/
+    padding: 0;
+    margin: 0;
+}
+.menu a {
+    text-decoration: none;
+    color: #8daafa;  
+    font-weight: bold;
+}
+/*以上header*/
+
+
+.footer{
+    background: #e0eefc;
+    
+}
