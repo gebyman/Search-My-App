@@ -84,7 +84,7 @@ const vaildateInputs = () => {
             email: emailValue,
             password: passwordValue
         };
-        fetch('https://search-my-app.onrender.com', {
+        fetch('https://search-my-app.onrender.com/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +95,12 @@ const vaildateInputs = () => {
                 password: passwordValue
             }),
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.message === '註冊成功') {
                     alert('註冊成功！');
