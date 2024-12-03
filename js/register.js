@@ -84,7 +84,7 @@ const vaildateInputs = () => {
             email: emailValue,
             password: passwordValue
         };
-        fetch('http://localhost:3000/register', {
+        fetch('https://search-my-app.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
