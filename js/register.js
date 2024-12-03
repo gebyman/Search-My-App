@@ -95,7 +95,11 @@ const validateInputs = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({
+                username: usernameValue,
+                email: emailValue,
+                password: passwordValue
+            }),
         })
             .then((response) => {
                 if (!response.ok) {
@@ -106,12 +110,11 @@ const validateInputs = () => {
                 return response.json();
             })
             .then((data) => {
-                alert(data.message || '註冊成功！');
-                console.log(data.user); // 伺服器回傳的資料
+                console.log(data);
             })
             .catch((error) => {
                 console.error('註冊失敗：', error.message);
-                alert(`註冊失敗：${error.message}`);
             });
+        
     }
 };

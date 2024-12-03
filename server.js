@@ -35,23 +35,46 @@ db.serialize(() => {
 });
 
 // 註冊路由
-app.post('/register', (req, res) => {
+
+如果註冊資料未成功存入 SQLite 資料庫，可能的原因包括資料格式問題、伺服器邏輯錯誤或資料庫操作失敗。以下是詳細的排查步驟：
+
+1. 檢查伺服器日誌
+在 /register 路由中，添加日誌以確認提交的資料和操作是否正常。
+
+修改 /register 路由：
+
+javascript
+複製程式碼
+app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
+    console.log('Received data:', { username, email, password });
+
     if (!username || !email || !password) {
+        console.log('Validation failed: Missing fields');
         return res.status(400).json({ message: '所有欄位皆為必填' });
     }
 
-    const query = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
-    db.run(query, [username, email, password], function (err) {
-        if (err) {
-            if (err.code === 'SQLITE_CONSTRAINT') {
-                return res.status(400).json({ message: '該電子郵件已被註冊' });
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const query = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
+
+        db.run(query, [username, email, hashedPassword], function (err) {
+            if (err) {
+                console.error('Database error:', err.message);
+                if (err.code === 'SQLITE_CONSTRAINT') {
+                    return res.status(400).json({ message: '該電子郵件已被註冊' });
+                }
+                return res.status(500).json({ message: '伺服器錯誤' });
             }
-            return res.status(500).json({ message: '伺服器錯誤' });
-        }
-        res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
-    });
+
+            console.log('Data inserted successfully:', { id: this.lastID, username, email });
+            res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ message: '伺服器錯誤', error: error.message });
+    }
 });
 
 // 啟動伺服器
