@@ -36,15 +36,7 @@ db.serialize(() => {
 
 // 註冊路由
 
-如果註冊資料未成功存入 SQLite 資料庫，可能的原因包括資料格式問題、伺服器邏輯錯誤或資料庫操作失敗。以下是詳細的排查步驟：
 
-1. 檢查伺服器日誌
-在 /register 路由中，添加日誌以確認提交的資料和操作是否正常。
-
-修改 /register 路由：
-
-javascript
-複製程式碼
 app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
