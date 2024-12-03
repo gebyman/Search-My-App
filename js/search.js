@@ -40,7 +40,7 @@ function bindCategoryEvents() {
                 renderCards(filteredData); //顯示分類後數據
             }
         });
-    });
+    });  
 }
 
 // 搜索功能

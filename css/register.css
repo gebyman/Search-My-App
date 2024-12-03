@@ -1,0 +1,42 @@
+#form{
+    width: 300px;
+    margin: 20vh auto 20vh auto;
+    padding: 20px;    
+    background: #b0e0ed;
+    border-radius: 4px;
+    font-size: 12px;
+}
+#form h1{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(50, 95, 143);
+    text-align: center;
+}
+#form button{
+    padding: 10px;
+    margin-top: 10px;
+    background: #bcdbe4;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+}
+.input-control{
+    display: flex;
+    flex-direction: column;
+   
+}
+.input-control input{
+    border: 2px solid #f0f0f0;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+}
+.input-control input:focus{
+    outline: 0;
+}
+.input-control.success input{
+    border-color: #2ea772;
+}
+.input-control.error input{
+    border-color: #ff2121;
+}
