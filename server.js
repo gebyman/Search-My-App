@@ -18,6 +18,9 @@ const db = new sqlite3.Database('./users.db', (err) => {
         console.log('Connected to SQLite database.');
     }
 });
+app.get('/', (req, res) => {
+    res.send('Welcome to My App! The server is running successfully.');
+});
 
 // 初始化資料表
 db.serialize(() => {
