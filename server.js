@@ -6,7 +6,7 @@ import sqlite3 from 'sqlite3';
 const app = express();
 const PORT = 3000;
 
-const bodyParser = require('body-parser');
+
 
 
 
