@@ -85,7 +85,7 @@ const vaildateInputs = () => {
             password: passwordValue
         };
     
-        fetch('https://gebyman.github.io/Search-My-App/register.html', {
+        fetch('http://localhost:3000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const vaildateInputs = () => {
                 }
             })
             .catch(error => {
-                console.log('註冊失敗：', error);
+                console.error('註冊失敗：', error);
             });
     }
     
