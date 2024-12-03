@@ -6,13 +6,13 @@ import bcrypt from 'bcrypt';
 
 const app = express();
 const PORT = process.env.PORT || 3000; // 支援動態埠號
-
+const dbPath = path.resolve(__dirname, 'js/users.db');
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 
 // 使用 SQLite 資料庫
-const db = new sqlite3.Database('./users.db', (err) => {
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
     } else {
