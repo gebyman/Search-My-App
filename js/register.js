@@ -85,7 +85,7 @@ const vaildateInputs = () => {
             password: passwordValue
         };
     
-        fetch('https://gebyman.github.io/Search-My-App/register.html', {
+        fetch('https://search-my-app.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
