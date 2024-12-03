@@ -102,7 +102,7 @@ const vaildateInputs = () => {
                 }
             })
             .catch(error => {
-                console.error('註冊失敗：', error);
+                console.log('註冊失敗：', error);
             });
     }
     
