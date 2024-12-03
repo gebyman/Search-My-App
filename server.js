@@ -3,17 +3,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import sqlite3 from 'sqlite3';
 import bcrypt from 'bcrypt';
-import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 3000; // 支援動態埠號
-const dbPath = path.resolve(__dirname, 'js/users.db');
+
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 
 // 使用 SQLite 資料庫
-const db = new sqlite3.Database(dbPath, (err) => {
+const db = new sqlite3.Database('./users.db', (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
     } else {
