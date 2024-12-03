@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import sqlite3 from 'sqlite3';
 import bcrypt from 'bcrypt';
+import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 3000; // 支援動態埠號
