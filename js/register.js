@@ -46,14 +46,14 @@ const validateInputs = () => {
     let isValid = true;
 
     if (usernameValue === '') {
-        setError(username, 'Username is required');
+        setError(username, '用戶名不能為空');
         isValid = false;
     } else {
         setSuccess(username);
     }
 
     if (emailValue === '') {
-        setError(email, 'Email is required');
+        setError(email, 'Email不能為空');
         isValid = false;
     } else if (!isValidEmail(emailValue)) {
         setError(email, '請提供正確的 Email');
@@ -63,7 +63,7 @@ const validateInputs = () => {
     }
 
     if (passwordValue === '') {
-        setError(password, 'Password is required');
+        setError(password, '密碼不能為空');
         isValid = false;
     } else if (passwordValue.length < 8) {
         setError(password, '密碼請大於八個字數');
@@ -73,7 +73,7 @@ const validateInputs = () => {
     }
 
     if (password2Value === '') {
-        setError(password2, 'Password confirmation is required');
+        setError(password2, '請確認輸入一致');
         isValid = false;
     } else if (password2Value !== passwordValue) {
         setError(password2, '請確認是否輸入一致');

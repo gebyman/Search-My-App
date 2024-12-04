@@ -1,17 +1,24 @@
 #form{
-    width: 300px;
+    width: 800px;
+ 
     margin: 20vh auto 20vh auto;
     padding: 20px;    
-    background: #b0e0ed;
+    background: #e0eefc;
     border-radius: 4px;
     font-size: 12px;
 }
 #form h1{
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: rgb(50, 95, 143);
     text-align: center;
 }
+label{
+    font-size: 24px;
+    font-weight: bold;
+    color: #7e848a;
+}
+
 #form button{
     padding: 10px;
     margin-top: 10px;
@@ -28,8 +35,9 @@
 .input-control input{
     border: 2px solid #f0f0f0;
     display: block;
-    font-size: 12px;
+    font-size: 24px;
     padding: 10px;
+
 }
 .input-control input:focus{
     outline: 0;
@@ -39,4 +47,190 @@
 }
 .input-control.error input{
     border-color: #ff2121;
+}
+
+.off-screen-menu{
+    display: none;
+}
+.error{
+    font-size: 16px;
+    color: #ff0000;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+@media (max-width: 575.98px) { 
+   
+    .header{
+        display: none;
+    }
+    #form{
+        width: auto;
+        margin: 20vh auto 20vh auto;
+        padding: 20px;    
+        background: #e0eefc;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .off-screen-menu{
+        background: #e0eefc;
+        height: 100vh;
+        width: 100%;
+        max-width: 450px;
+        position: fixed;
+        top: 0;
+        right: -450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+    }
+    .off-screen-menu a{
+        text-decoration: none;
+     }
+    .off-screen-menu ul{
+       padding-left: 0;
+    }
+    .off-screen-menu.active{
+        right: 0;
+    }
+    .top{
+        padding: 1rem;
+        display: flex;
+        background: #e0eefc;
+    }
+    .ham-menu{
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+    }
+    .ham-menu span{
+        height: 5px;
+        width: 100%;
+        background-color: #6F86FF;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        transition: .3s ease;
+    }
+    .ham-menu span:nth-child(1){
+        top: 25%;
+       
+    }
+    .ham-menu span:nth-child(3){
+        top: 75%;
+       
+    }
+
+
+    .ham-menu.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+        
+    }
+    .ham-menu.active span:nth-child(2){
+        opacity: 0;
+    }
+    .ham-menu.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+
+   
+}
+@media (max-width: 767.98px) { 
+   
+    .header{
+        display: none;
+    }
+    #form{
+        width: auto;
+        margin: 20vh auto 20vh auto;
+        padding: 20px;    
+        background: #e0eefc;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .off-screen-menu{
+        background: #e0eefc;
+        height: 100vh;
+        width: 100%;
+        max-width: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+    }
+    .off-screen-menu a{
+        text-decoration: none;
+     }
+    .off-screen-menu ul{
+       padding-left: 0;
+    }
+    .off-screen-menu.active{
+        right: 0;
+        width: 100%;
+    }
+    .top{
+        padding: 1rem;
+        display: flex;
+        background: #e0eefc;
+    }
+    .ham-menu{
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+    }
+    .ham-menu span{
+        height: 5px;
+        width: 100%;
+        background-color: #6F86FF;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        transition: .3s ease;
+    }
+    .ham-menu span:nth-child(1){
+        top: 25%;
+       
+    }
+    .ham-menu span:nth-child(3){
+        top: 75%;
+       
+    }
+
+
+    .ham-menu.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+        
+    }
+    .ham-menu.active span:nth-child(2){
+        opacity: 0;
+    }
+    .ham-menu.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+
+  
 }
