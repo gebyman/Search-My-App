@@ -90,7 +90,7 @@ const validateInputs = () => {
             password: passwordValue,
         };
 
-        fetch('https://gebyman.github.io/Search-My-App/register.html', {
+        fetch('https://search-my-app-1.onrender.com/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
