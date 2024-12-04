@@ -1,3 +1,5 @@
+
+
 .header{
     display: flex;
     justify-content: space-between;
@@ -45,7 +47,7 @@
     color: #b1b7c6;
     font-size: 16px;
 }
-.card{
+.card1{
     text-align: center;
     margin-top: 5%;
 }
@@ -120,4 +122,107 @@
     align-items: center;
     flex-direction: column;
     line-height: 24px;
+}
+
+
+
+
+@media (max-width: 575.98px) { 
+   
+    .header{
+        display: none;
+    }
+    .off-screen-menu{
+        background-color: rgb(74, 74, 78);
+        height: 100vh;
+        width: 100%;
+        max-width: 450px;
+        position: fixed;
+        top: 0;
+        right: -450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+       
+    }
+    .off-screen-menu ul{
+       padding-left: 0;
+    }
+    .off-screen-menu.active{
+        right: 0;
+    }
+    .top{
+        padding: 1rem;
+        display: flex;
+        background-color: rgb(171, 182, 222);
+    }
+    .ham-menu{
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+    }
+    .ham-menu span{
+        height: 5px;
+        width: 100%;
+        background-color: #6F86FF;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        transition: .3s ease;
+    }
+    .ham-menu span:nth-child(1){
+        top: 25%;
+       
+    }
+    .ham-menu span:nth-child(3){
+        top: 75%;
+       
+    }
+
+
+    .ham-menu.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+        
+    }
+    .ham-menu.active span:nth-child(2){
+        opacity: 0;
+    }
+    .ham-menu.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+
+
+    .featuredAppCard ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-left: -5%;
+    }
+    .wish{
+        padding-top: 30%;
+        padding-bottom: 20%;
+        display: flex;
+        flex-direction: column;
+    }
+    .findApp{
+        display: flex;
+        flex-direction: column;
+        height: 120vh;
+    }
+    .wishman{
+        width: 50%;
+        height: 50%;
+    }
+    .card1 img{
+        width: 100%;
+    }
 }
