@@ -2,12 +2,23 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import sqlite3 from 'sqlite3';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+console.log('資料庫檔案位置:', __dirname + '/users.db');
 const app = express();
 const PORT = 3000;
 
 // 中間件
-app.use(cors());
+// 允許來自 GitHub Pages 的請求
+app.use(cors({
+    origin: 'https://<your-username>.github.io',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+}));
 app.use(bodyParser.json());
 
 // 初始化 SQLite 資料庫
@@ -16,6 +27,7 @@ const db = new sqlite3.Database('./users.db', (err) => {
         console.error('資料庫連接錯誤:', err.message);
     } else {
         console.log('已連接到 SQLite 資料庫');
+        console.log('資料庫檔案位置:', __dirname + '/users.db');
     }
 });
 
