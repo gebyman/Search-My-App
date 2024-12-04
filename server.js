@@ -17,16 +17,11 @@ const allowedOrigins = [
 ];
 // 中間件
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true); // 允許請求
-        } else {
-            callback(new Error('Not allowed by CORS')); // 拒絕請求
-        }
-    },
-    methods: ['GET', 'POST'], // 允許的 HTTP 方法
-    allowedHeaders: ['Content-Type'], // 允許的請求標頭
+    origin: ['https://gebyman.github.io', 'http://localhost:8080'], // 確保包含您的前端來源
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
 }));
+
 app.use(bodyParser.json());
 
 // 初始化 SQLite 資料庫
