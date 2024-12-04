@@ -90,7 +90,7 @@ const validateInputs = () => {
             password: passwordValue,
         };
 
-        fetch('http://localhost:3000/register', {
+        fetch('https://gebyman.github.io/Search-My-App/register.html', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
