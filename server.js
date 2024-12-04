@@ -11,13 +11,21 @@ const __dirname = dirname(__filename);
 console.log('資料庫檔案位置:', __dirname + '/users.db');
 const app = express();
 const PORT = 3000;
-
+const allowedOrigins = [
+    'https://gebyman.github.io', // GitHub Pages 的前端網址
+    'http://localhost:8080', // 本地測試用網址
+];
 // 中間件
-// 允許來自 GitHub Pages 的請求
 app.use(cors({
-    origin: 'https://<your-username>.github.io',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // 允許請求
+        } else {
+            callback(new Error('Not allowed by CORS')); // 拒絕請求
+        }
+    },
+    methods: ['GET', 'POST'], // 允許的 HTTP 方法
+    allowedHeaders: ['Content-Type'], // 允許的請求標頭
 }));
 app.use(bodyParser.json());
 
