@@ -63,6 +63,7 @@ app.post('/register', (req, res) => {
     `;
     db.run(query, [username, email, password], function (err) {
         if (err) {
+            console.error('資料庫插入錯誤:', err.message);
             if (err.code === 'SQLITE_CONSTRAINT') {
                 return res.status(400).json({ message: '該電子郵件已被註冊' });
             }
