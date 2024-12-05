@@ -72,7 +72,7 @@ function renderCards(apps) {
     apps.forEach(app => {
         str += `
             <div class="card">
-                <a href="#"><img src="${app.image}" alt="${app.title}"></a>
+                <a href="${app.appintro}"><img src="${app.image}" alt="${app.title}"></a>
                 <div class="card-body">
                     <h1 class="card-title">${app.title}</h1>
                     <p class="card-text">${app.description}</p>

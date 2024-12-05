@@ -39,36 +39,31 @@ db.run(`
 `);
 
 // 註冊路由
-import bcrypt from 'bcrypt';
-
-app.post('/register', async (req, res) => {
+app.post('/register', (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
         return res.status(400).json({ message: '所有欄位皆為必填' });
     }
 
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const query = `
-            INSERT INTO users (username, email, password)
-            VALUES (?, ?, ?)
-        `;
-        db.run(query, [username, email, hashedPassword], function (err) {
-            if (err) {
-                if (err.code === 'SQLITE_CONSTRAINT') {
-                    return res.status(400).json({ message: '該電子郵件已被註冊' });
-                }
-                return res.status(500).json({ message: '伺服器錯誤' });
+    const query = `
+        INSERT INTO users (username, email, password)
+        VALUES (?, ?, ?)
+    `;
+    db.run(query, [username, email, password], function (err) {
+        if (err) {
+            console.error('資料庫插入錯誤:', err.message);
+            if (err.code === 'SQLITE_CONSTRAINT') {
+                return res.status(400).json({ message: '該電子郵件已被註冊' });
             }
-            res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
-        });
-    } catch (error) {
-        console.error('密碼加密錯誤:', error.message);
-        res.status(500).json({ message: '伺服器錯誤' });
-    }
+            console.error('資料庫錯誤:', err.message);
+            return res.status(500).json({ message: '伺服器錯誤' });
+        }
+        
+        res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
+       
+    });
 });
-
 
 // 登入路由
 app.post('/login', (req, res) => {

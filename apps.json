@@ -4,6 +4,7 @@
       "title": "跑跑卡丁車",
       "description": "一款賽車競速遊戲,內含多種玩法,團隊,個人,道具",
       "downloadLink": "https://apps.apple.com/tw/app/%E8%B7%91%E8%B7%91%E5%8D%A1%E4%B8%81%E8%BB%8A-rush/id1466736988",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppRush.html",
       "type":"遊戲"
     },
     {
@@ -11,6 +12,7 @@
       "title": "Google 地圖",
       "description": "一款地圖導航應用，提供精確位置和路徑規劃。",
       "downloadLink": "https://apps.apple.com/tw/app/google-%E5%9C%B0%E5%9C%96/id585027354",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppGooglemap.html",
       "type":"生活"
     },
     {
@@ -18,6 +20,7 @@
       "title": "愛料理",
       "description": "一款為美食愛好者提供推薦的應用，覆蓋多種美食類別。",
       "downloadLink": "https://apps.apple.com/tw/app/%E6%84%9B%E6%96%99%E7%90%86/id554065086",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppLovefood.html",
       "type":"學習"
     },
     {
@@ -25,6 +28,7 @@
       "title": "Spotify",
       "description": "全球知名的音樂串流平台，海量音樂隨心聽。",
       "downloadLink": "https://apps.apple.com/tw/app/spotify-%E9%9F%B3%E6%A8%82%E5%92%8C-podcast/id324684580",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppSpotify.html",
       "type":"音樂"
     },
     {
@@ -32,6 +36,7 @@
       "title": "食尚玩家",
       "description": "探索世界各地的美食與飲料搭配。",
       "downloadLink": "https://apps.apple.com/tw/app/%E9%A3%9F%E5%B0%9A%E7%8E%A9%E5%AE%B6-%E7%B2%BE%E9%81%B8%E9%A4%90%E5%BB%B3%E6%99%AF%E9%BB%9Ex%E5%B0%88%E5%B1%AC%E5%84%AA%E6%83%A0/id1508974479",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppTaste.html",
       "type":"生活"
     },
     {
@@ -39,6 +44,7 @@
       "title": "寶可夢刷牙",
       "description": "幫助孩子養成刷牙習慣的趣味應用，伴隨寶可夢一起健康成長。",
       "downloadLink": "https://apps.apple.com/tw/app/pok%C3%A9mon-smile/id1512331079",
+      "appintro":"https://gebyman.github.io/Search-My-App/introAppPokemonbrushteeth.html",
       "type":"兒童"
     }
     
