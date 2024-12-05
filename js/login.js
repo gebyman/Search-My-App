@@ -29,7 +29,7 @@ form.addEventListener('submit', (e) => {
             if (data.message === '登入成功') {
                 alert('登入成功！');
                 console.log('用戶資料:', data.user);
-                // 可跳轉至其他頁面，例如：window.location.href = '/dashboard';
+                window.location.href = '/index.html';
             } else {
                 alert(data.message);
             }

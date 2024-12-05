@@ -5,22 +5,16 @@ import sqlite3 from 'sqlite3';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 console.log('資料庫檔案位置:', __dirname + '/users.db');
 const app = express();
 const PORT = 3000;
-const allowedOrigins = [
-    'https://gebyman.github.io', // GitHub Pages 的前端網址
-    'http://localhost:8080', // 本地測試用網址
-];
+
 // 中間件
-app.use(cors({
-    origin: ['https://gebyman.github.io', 'http://localhost:8080'], // 確保包含您的前端來源
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -45,29 +39,36 @@ db.run(`
 `);
 
 // 註冊路由
-app.post('/register', (req, res) => {
+import bcrypt from 'bcrypt';
+
+app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
         return res.status(400).json({ message: '所有欄位皆為必填' });
     }
 
-    const query = `
-        INSERT INTO users (username, email, password)
-        VALUES (?, ?, ?)
-    `;
-    db.run(query, [username, email, password], function (err) {
-        if (err) {
-            console.error('資料庫插入錯誤:', err.message);
-            if (err.code === 'SQLITE_CONSTRAINT') {
-                return res.status(400).json({ message: '該電子郵件已被註冊' });
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const query = `
+            INSERT INTO users (username, email, password)
+            VALUES (?, ?, ?)
+        `;
+        db.run(query, [username, email, hashedPassword], function (err) {
+            if (err) {
+                if (err.code === 'SQLITE_CONSTRAINT') {
+                    return res.status(400).json({ message: '該電子郵件已被註冊' });
+                }
+                return res.status(500).json({ message: '伺服器錯誤' });
             }
-            console.error('資料庫錯誤:', err.message);
-            return res.status(500).json({ message: '伺服器錯誤' });
-        }
-        res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
-    });
+            res.status(201).json({ message: '註冊成功', user: { id: this.lastID, username, email } });
+        });
+    } catch (error) {
+        console.error('密碼加密錯誤:', error.message);
+        res.status(500).json({ message: '伺服器錯誤' });
+    }
 });
+
 
 // 登入路由
 app.post('/login', (req, res) => {

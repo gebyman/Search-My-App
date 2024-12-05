@@ -90,7 +90,7 @@ const validateInputs = () => {
             password: passwordValue,
         };
 
-        fetch('https://search-my-app-1.onrender.com/register', {
+        fetch('http://localhost:3000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -106,6 +106,7 @@ const validateInputs = () => {
                 if (data.message === '註冊成功') {
                     alert('註冊成功！');
                     console.log(data.user); // 伺服器回傳的資料
+                    window.location.href='/login.html'
                 } else {
                     alert(data.message);
                 }
